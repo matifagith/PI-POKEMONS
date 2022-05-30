@@ -1,0 +1,12 @@
+.footerContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  background-color: rgba(80, 80, 80, 0.473);
+  align-items: center;
+}
+.title {
+  margin-left: 20px;
+  height: 50px;
+  padding: 5px;
+}

@@ -1,0 +1,15 @@
+//ACCIONES - BUSCAN DATA
+export const GET_ALL_POKES = 'GET_ALL_POKES';
+export const CLEAR_POKEMONS_STATE = 'CLEAR_POKEMONS_STATE'
+export const GET_POKE_TYPES = 'GET_POKE_TYPES'; 
+export const GET_POKE_DETAIL = 'GET_POKE_DETAIL';
+export const CLEAR_DETAIL_STATE = 'CLEAR_DETAIL_STATE';
+export const SEARCH_BY_NAME = 'SEARCH_BY_NAME';
+export const SEARCH_BY_ID = 'SEARCH_BY_ID';
+export const CREATE_POKE = 'CREATE_POKE';
+export const ORDER_BY = 'ORDER_BY';
+export const FILTER_BY_ORIGIN = 'FILTER_BY_ORIGIN';
+export const FILTER_BY_TYPE = 'FILTER_BY_TYPE';
+export const GET_DB_POKES = 'GET_DB_POKES';
+
+

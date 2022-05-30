@@ -1,0 +1,73 @@
+@import './variables.less';
+
+.selects{
+    font-family: @main-font;
+}
+
+.containerLinks{
+    display: flex;
+    justify-content: space-between;
+
+    .title{
+        margin-left: 20px;
+        height: 50px;
+    }
+    .buttons{
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+    }
+}
+
+.searchselects{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+    .searchBar{
+        display: flex;
+    }
+    .selectscontainer{
+        display: flex;
+    }
+}
+
+.containerCards{
+    display: grid;
+    background-color: rgba(80, 80, 80, 0.473);
+    margin: 1rem 2rem;
+    padding: 2rem;
+    border-radius: 50px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 10px;
+    column-gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.homeBackImage{
+    background-image: url('../../resources/home/homebackimage1.webp');
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    margin: 0;
+    padding: 10px 0 0 0;
+    
+
+    /* height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0; */
+}
+
+.innerContainer{
+    min-height: 26.3rem;
+}
+
+.botonMyPokes{
+    margin: 0 20px 0 20px;
+}
+
+.selectsOrigin{
+    font-family: @main-font;
+    margin: 0 20px 0 20px;
+}

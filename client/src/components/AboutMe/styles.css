@@ -1,0 +1,42 @@
+.linksInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.linksInfo .miniInfo {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.linksInfo .miniInfo img {
+  height: 2rem;
+  width: 2rem;
+  margin: 0 1rem;
+}
+.linksInfo .miniInfo img:hover {
+  cursor: pointer;
+}
+.linksInfo .miniInfo p {
+  margin: 1rem;
+  font-size: 17px;
+  font-family: 'Merriweather', serif;
+}
+.linksInfo .miniInfo p:hover {
+  cursor: pointer;
+}
+.aboutMe {
+  background-color: rgba(0, 0, 0, 0.678);
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 5rem;
+  border-radius: 20px;
+  color: aliceblue;
+}
+.containerAbMe .container h1 {
+  font-size: 50px;
+  font-family: 'Merriweather', serif;
+  margin: 1rem 2rem;
+  border-bottom: 1px solid white;
+}

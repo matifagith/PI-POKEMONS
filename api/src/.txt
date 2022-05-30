@@ -1,0 +1,13 @@
+post
+
+{
+    "name":"claudia",
+    "height":"10",
+    "weight":"10",
+    "hp":"10",
+    "speed":"10",
+    "attack":"10",
+    "defense":"10",
+    "image":"",
+    "types":["hola","dragon"]
+}
