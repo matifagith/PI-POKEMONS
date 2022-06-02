@@ -49,6 +49,13 @@ export default function Home(){
         
     },[dispatch])
 
+    const handleClick = (e) =>{
+        e.preventDefault()
+        dispatch(filterByOrigin())
+        dispatch(filterByType('default'))
+        dispatch(clearAllPokes('default'))
+        dispatch(getAllPokes())
+    }
 
     function handleOrder(e){
         e.preventDefault()
@@ -71,18 +78,21 @@ export default function Home(){
             <div className='containerLinks'>
                 <div>
                     <Link to={'/'}>
-                        <img src={require('../../resources/landingImage/landingText.png').default} alt="Henry Poke" className="title" />
+                        <img src={require('../../resources/landingImage/landingText.png').default} alt="Henry Poke" className="homeTitle" />
                     </Link>
                 </div>
                 <div className='buttons'>
                     <Link to={'/create'}><button>Create</button></Link>
-                    <Link to={'/mypokes'}><button className='botonMyPokes'>My Pokes</button></Link> 
-                    <Link to={'/aboutme'}><button>About me</button></Link>
+                    {/* <Link to={'/mypokes'}><button className='botonMyPokes'>My Pokes</button></Link>  */}
+                    <Link to={'/aboutme'}><button className='botonAbMe'>About me</button></Link>
                 </div>
             </div>
-            <div >
+            
             <div className='searchselects'>
                 <SearchBar className='searchBar'/>
+                {pokesPaginateArr.length !== 0 ? <img src={require(`../../resources/home/pokeball.jpeg`).default} alt='pokeball'  onClick={(e)=>handleClick(e)} /> :
+                <img src={require(`../../resources/home/pokeballGif.gif`).default} alt='pokeball'  onClick={(e)=>handleClick(e)} />}
+                
                 <div className='selectscontainer'>
                     {pokeErrors[0] !== 'NPAC' && 
                         <select className='selects' onChange={(e)=>handleOrder(e)}>
@@ -118,16 +128,27 @@ export default function Home(){
                     }
                 </div>
             </div>
-
+            
             <div className='innerContainer'>
             {pokesPaginateArr.length === 0 ? <Loading/> :  
-                pokemons[0] === 'PDNE' ? <div>Oops!... Couldn't find Pokemons with that name</div> :
+                pokemons[0] === 'PDNE' ? 
+                <div className='errContainer'>
+                    <img className='pikachuImg' src={require(`../../resources/home/pikachuPregunta.png`).default} alt='pikachuPregunta' />
+                    <p className='errorMesage'>Oops!... Couldn't find Pokemons with that name</p>
+                </div> :
                 pokeErrors[0] === 'NPAC' ? 
-                <div>
-                    <p>Oops!... You dont have pokemons Created</p>
-                    <Link to='/create'><button>click here</button></Link><label> to create one or change origin filter</label>
+                <div className='errContainer'>
+                    <img className='pikachuImg' src={require(`../../resources/home/pikachuPregunta.png`).default} alt='pikachuPregunta' />
+                    <div className='errorMesage'>
+                        <p>Oops!... You dont have pokemons Created</p>
+                        <Link to='/create'><button>click here</button></Link><label> to create one or change origin filter</label>
+                    </div>
                 </div>   : 
-                pokeErrors[0] === 'NPWTT' ? <div>Oops!... Couldn't find Pokemons with that type</div> :
+                pokeErrors[0] === 'NPWTT' ? 
+                <div className='errContainer'>
+                    <img className='pikachuImg' src={require(`../../resources/home/pikachuPregunta.png`).default} alt='pikachuPregunta' />
+                    <p className='errorMesage'>Oops!... Couldn't find Pokemons with that type</p>
+                </div> :
                 <div>
                     <div className='containerCards'>
                         {pokesPaginateArr.map(poke=>{
@@ -147,7 +168,7 @@ export default function Home(){
                 </div> 
             }
             </div>
-            </div>
+            
             <div><Footer/></div>
         </div>
     )

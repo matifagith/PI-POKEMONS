@@ -1,3 +1,25 @@
+.abMeContainer {
+  background-image: url('../../resources/aboutMe/ash1.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0 0 0;
+}
+.abMeContainer button {
+  border-radius: 50px;
+  padding: 10px;
+  background-color: #4a4f4e;
+  color: white;
+  font-weight: bold;
+  border-color: white;
+  font-size: 20px;
+}
+.abMeContainer button:hover {
+  cursor: pointer;
+  border-radius: 50px;
+  color: black;
+}
 .linksInfo {
   display: flex;
   flex-direction: column;
@@ -25,6 +47,10 @@
 }
 .linksInfo .miniInfo p:hover {
   cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.678);
+  /* color: black; */
+  padding: 0 2px 0 2px;
+  border-radius: 5px;
 }
 .aboutMe {
   background-color: rgba(0, 0, 0, 0.678);
@@ -34,9 +60,22 @@
   border-radius: 20px;
   color: aliceblue;
 }
+.containerAbMe {
+  min-height: calc(100vh - 438, 88);
+}
 .containerAbMe .container h1 {
   font-size: 50px;
   font-family: 'Merriweather', serif;
   margin: 1rem 2rem;
   border-bottom: 1px solid white;
+}
+.abMeBody {
+  min-height: calc(100vh - 93px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.infoMe {
+  margin-left: 5%;
+  margin-right: 5%;
 }

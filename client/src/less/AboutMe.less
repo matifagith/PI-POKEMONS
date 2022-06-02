@@ -1,33 +1,63 @@
 @import './variables.less';
 
+.abMeContainer{
+    background-image: url('../../resources/aboutMe/ash1.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    margin: 0;
+    padding: 10px 0 0 0;
+
+    button{
+        border-radius: 50px;
+        padding: 10px;
+        background-color: #4a4f4e;
+        color: white;
+        font-weight: bold;
+        border-color: white;
+        font-size: 20px;
+            &:hover {
+                
+                cursor: pointer;
+                border-radius: 50px;
+                color:black
+            }
+    }
+}
+
 .linksInfo {
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-.miniInfo {
-    text-decoration: none;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img{
-        height: 2rem;
-        width: 2rem;
-        margin: 0 1rem;
-        &:hover {
-            cursor: pointer;
+    .miniInfo {
+        text-decoration: none;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            height: 2rem;
+            width: 2rem;
+            margin: 0 1rem;
+            &:hover {
+                cursor: pointer;
+
+            }
+        }
+        p{
+            margin: 1rem;
+            font-size: 17px;
+            font-family: @main-font;
+            &:hover {
+                cursor: pointer;
+                background-color: rgba(0, 0, 0, 0.678);
+                /* color: black; */
+                padding: 0 2px 0 2px;
+                border-radius: 5px; 
+            }
         }
     }
-    p{
-        margin: 1rem;
-        font-size: 17px;
-        font-family: @main-font;
-        &:hover {
-            cursor: pointer;
-        }
-    }
-}
 }
 .aboutMe {
     background-color: rgba(0, 0, 0, 0.678);
@@ -39,6 +69,7 @@
 }
 
 .containerAbMe{
+    min-height: calc(100vh - 438,88);
     .container{
         h1{ 
             font-size:50px;
@@ -48,3 +79,16 @@
         }
     }
 }
+
+.abMeBody{
+    min-height: calc(100vh - 93px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.infoMe{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+

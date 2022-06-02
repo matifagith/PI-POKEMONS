@@ -1,0 +1,15 @@
+.searchContainer button {
+  border-radius: 50px;
+  background-color: #c369c3;
+  color: white;
+  border-color: white;
+}
+.searchContainer button:hover {
+  background-color: rgba(214, 54, 54, 0.473);
+  cursor: pointer;
+  border-radius: 50px;
+  color: white;
+}
+.searchContainer input {
+  border-radius: 50px;
+}

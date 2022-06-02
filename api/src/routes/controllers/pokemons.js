@@ -38,7 +38,7 @@ const pokeDbTemplate = (poke)=>{
 
 async function getAllApiPokes(){
     try{
-        const apiAllPokes = await axios.get(`${API_URL_POKES}?limit=30`);   
+        const apiAllPokes = await axios.get(`${API_URL_POKES}?limit=2`);   
         const apiPokes = apiAllPokes.data?.results.map(e => axios.get(e.url)); //ingreso a todos los urls
         const pokesUrlInfo = await axios.all(apiPokes) //espero a que se cumplan todas las promises 
 

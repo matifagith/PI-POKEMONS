@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { useDispatch, useSelector} from 'react-redux'
 import {getPokeByName, getAllPokes} from '../../redux/actions/actionsCreator'
+import styles from './styles.css'
 
 
 export default function SearchBar(){
@@ -25,21 +26,27 @@ export default function SearchBar(){
         }
     }
 
-    const handleClick = (e) =>{
+   /*  const handleClick = (e) =>{
         e.preventDefault()
         dispatch(getAllPokes())
         setInput('')
-    }
+    } */
 
     return(
-        <div>
+        <div className='searchContainer'>
             <input type='search' value={input} placeholder='Search by name' onChange={(e)=>handleChange(e)}/>
-            <button type='submit' onClick={(e) => handleSubmit(e)}>Search</button>
-            { pokemons[0] === 'PDNE' ? 
+            <button   type='submit' onClick={(e) => handleSubmit(e)}>Search</button>
+            {/* { pokemons[0] === 'PDNE' ? 
                 <button onClick={(e) => handleClick(e)}><strong>Reset Search</strong></button>
                 : ''
-                }
+                } */}
         </div>
     )
 
 }
+
+
+/* background-color: rgba(80, 80, 80, 0.473);
+margin: 1rem 2rem;
+padding: 1rem;
+border-radius: 50px; */

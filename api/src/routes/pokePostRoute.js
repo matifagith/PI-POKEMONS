@@ -32,6 +32,7 @@ router.post('/',async (req, res, next)=>{
             const type = await Type.findOne({
                 where: {name: types[i]}
             })
+            /* console.log(type) */
             pokeCreate.addType(type)
         }
     }

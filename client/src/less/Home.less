@@ -2,32 +2,78 @@
 
 .selects{
     font-family: @main-font;
+    border-radius: 50px;
+    background-color: #c369c3;
+    color: white;
+    border-color: white;
+    &:hover {
+        background-color: @background-color;
+        cursor: pointer;
+        border-radius: 50px;
+        color: white;
+    }
 }
 
 .containerLinks{
     display: flex;
     justify-content: space-between;
+    height: 65px;
 
-    .title{
+    .homeTitle{
         margin-left: 20px;
         height: 50px;
+        padding: 0 0 0 10px;
+        &:hover {
+            background-color: @background-color;
+            cursor: pointer;
+            border-radius: 50px;
+            padding: 0px 5px 0px 10px;
+        }
     }
     .buttons{
         display: flex;
         align-items: center;
         margin-right: 20px;
+        button{
+            border-radius: 50px;
+            padding: 10px;
+            background-color: #c369c3;
+            color: white;
+            border-color: white;
+          &:hover {
+            background-color: @background-color;
+            cursor: pointer;
+            border-radius: 50px;
+            color: white;
+        }  
+        }
+        
     }
 }
 
 .searchselects{
     display: flex;
     justify-content: space-evenly;
-    padding: 20px;
+    padding: 3px 10px 3px 10px;
+    background-color: rgba(80, 80, 80, 0.473);
+    margin: 1rem 2rem;
+    border-radius: 50px;
+    align-items: center;
     .searchBar{
         display: flex;
     }
     .selectscontainer{
         display: flex;
+        max-height: 23px;
+    }
+    img{
+        max-height: 40px;
+        padding: 10px;
+        &:hover {
+            background-color: @background-color;
+            cursor: pointer;
+            border-radius: 50px;
+        }
     }
 }
 
@@ -51,23 +97,64 @@
     width: 100%;
     margin: 0;
     padding: 10px 0 0 0;
-    
-
-    /* height: 100vh;
-    width: 100vw;
-    margin: 0;
-    padding: 0; */
 }
 
 .innerContainer{
-    min-height: 26.3rem;
+    min-height: calc(100vh - 233px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.botonMyPokes{
-    margin: 0 20px 0 20px;
-}
+.botonAbMe{
+    margin: 0 0 0 20px;
+}   
 
 .selectsOrigin{
     font-family: @main-font;
     margin: 0 20px 0 20px;
+    border-radius: 50px;
+    background-color: #c369c3;
+    color: white;
+    border-color: white;
+    &:hover {
+        background-color: @background-color;
+        cursor: pointer;
+        border-radius: 50px;
+        color: white;
+    }
+}
+
+.pikachuImg{
+    max-height: 16rem;
+}
+
+.errorMesage{
+    /* background-color: rgba(80, 80, 80, 0.473); */
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 1%;
+    margin: 0 0 10px 0;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    button{
+    border-radius: 50px;
+    background-color: #c369c3;
+    color: white;
+    border-color: white;
+    &:hover {
+        background-color: @background-color;
+        cursor: pointer;
+        border-radius: 50px;
+        color: white;
+    }
+    }
+}
+
+.errContainer{
+    background-color: rgba(80, 80, 80, 0.473);
+    border-radius: 40px;
+    margin: 0 0 10px 0;
 }

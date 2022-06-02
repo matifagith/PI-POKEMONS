@@ -41,7 +41,7 @@ module.exports = (sequelize) => {
     image:{
       type: DataTypes.TEXT,
       allowNull: true,
-      defaultValue: defaultImage
+      defaultValue: ''
     }
   },
   {

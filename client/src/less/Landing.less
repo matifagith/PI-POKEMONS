@@ -17,10 +17,15 @@
 } 
 
 .imageTtitle{
-    font-family: @main-font;
-    display: flex;   
+    display: flex;
     margin-right: auto;
     margin-left: auto;
-    justify-content: center;    border: 10px;
-    background-color: #0000006b;
+    justify-content: center;
+    background-color: rgb(80 80 80 / 63%);
+    border-radius: 50px;
+    padding: 5px 20px 5px 20px;
+    &:hover {
+        background-color: @background-color;
+        cursor: pointer;
+    }
 }

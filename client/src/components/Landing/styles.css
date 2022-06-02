@@ -12,11 +12,16 @@
   vertical-align: middle;
 }
 .imageTtitle {
-  font-family: 'Merriweather', serif;
   display: flex;
   margin-right: auto;
   margin-left: auto;
   justify-content: center;
-  border: 10px;
-  background-color: #0000006b;
+  background-color: rgba(80, 80, 80, 0.63);
+  border-radius: 50px;
+  padding: 5px 20px 5px 20px;
+}
+.imageTtitle:hover {
+  background-color: rgba(214, 54, 54, 0.473);
+  cursor: pointer;
+  color: white;
 }
