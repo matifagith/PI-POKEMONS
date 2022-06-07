@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Loading from "../Loading/Loading";
+import Footer from '../Footer/Footer'
 import {getPokeDetail, clearDetail} from '../../redux/actions/actionsCreator'
+import styles from './styles.css'
 
 export default function PokeDetail(){
 
@@ -20,28 +22,36 @@ export default function PokeDetail(){
     },[dispatch,id])
 
     return(
-        <div>
-            <Link to={'/home'}><h3>HOME</h3></Link>
-            {pokeDetail.length === 0 ? <Loading/> : 
-            <div>
-                <img src={pokeDetail.image} alt={pokeDetail.name}/>
-                <h3>{pokeDetail.name[0].toUpperCase()+ pokeDetail.name.slice(1)}</h3>
-                <p>Height: {pokeDetail.height? pokeDetail.height : '-'}</p>
-                <p>Weight: {pokeDetail.weight? pokeDetail.weight : '-'}</p>
-                <p>HP: {pokeDetail.hp? pokeDetail.hp : '-'}</p>
-                <p>Speed: {pokeDetail.speed? pokeDetail.speed : '-'}</p>
-                <p>Attack: {pokeDetail.attack? pokeDetail.attack : '-'}</p>
-                <p>Defense: {pokeDetail.defense? pokeDetail.defense : '-'}</p>
-                <div>
-                    Type: {pokeDetail.types.map((t,i)=>{
-                    return(
-                        <div key={i}>
-                            <img alt={t} src={require(`../../resources/typesIcons/${t}.png`).default}/>
+        <div className="detailContainer">
+            <Link to={'/home'}><button>Home</button></Link>
+            <div className="detailBody">
+                {pokeDetail.length === 0 ? <Loading/> : 
+                <div className="pokeDetailInfo">
+                    <div key={styles+1}>
+                        <img className="detailImg" src={pokeDetail.image} alt={pokeDetail.name}/>
+                        <h2>{pokeDetail.name[0].toUpperCase()+ pokeDetail.name.slice(1)}</h2>
+                    </div>
+                    <div>
+                        <p>Height: {pokeDetail.height? pokeDetail.height : '-'}</p>
+                        <p>Weight: {pokeDetail.weight? pokeDetail.weight : '-'}</p>
+                        <p>HP: {pokeDetail.hp? pokeDetail.hp : '-'}</p>
+                        <p>Speed: {pokeDetail.speed? pokeDetail.speed : '-'}</p>
+                        <p>Attack: {pokeDetail.attack? pokeDetail.attack : '-'}</p>
+                        <p>Defense: {pokeDetail.defense? pokeDetail.defense : '-'}</p>
+                        <p>Types:</p>
+                        <div className="detailTypes">
+                            {pokeDetail.types.map((t,i)=>{
+                            return(
+                                    <img key={i} alt={t} src={require(`../../resources/typesIcons/${t}.png`).default}/>
+                            )})}
                         </div>
-                    )})}
-                </div>
-            </div>            
-            }
+                    </div>
+                </div>            
+                }
+            </div>
+            <div>
+                <Footer/>
+            </div>
         </div>
     )
 }

@@ -3,3 +3,13 @@
 @main-font: 'Merriweather', serif;
 
 @background-color: rgba(214, 54, 54, 0.473);
+
+.transitions(@box, @radius, @cursor){
+    transition: transform 0.5s;
+    &:hover{
+        box-shadow: @box;
+        border-radius: @radius;
+        transform: scale(1.1);
+        cursor: @cursor;
+    }
+}

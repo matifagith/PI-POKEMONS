@@ -4,7 +4,6 @@ import {createPoke, getAllTypes} from '../../redux/actions/actionsCreator'
 import { Link } from 'react-router-dom'
 import styles from './styles.css'
 import Footer from '../Footer/Footer'
-import {defaultImage} from './controllers'
 
 
 const validate = (input)=>{
@@ -54,15 +53,15 @@ export default function CreatePoke(){
     const types = useSelector(state=>state.pokeTypes)
     const [error, setError] = useState({})
     const [input, setInput] = useState({
-        name: "Pikashu",
-        image: defaultImage,
+        name: "",
+        image: "",
         weight: 0,
         height: 0,
         speed: 0,
         defense: 0,
         attack: 0,
         hp: 0,
-        types: ['ground','steel']
+        types: []
         
     })
 
@@ -106,10 +105,6 @@ export default function CreatePoke(){
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        /* if(!input.name){return alert('You must send name')}
-        if(!input.types.length){return alert('You must send at least one type')}
-        if(input.types.length > 2){return alert('You cant send more than two types')}       
-           */
         if(error.name || error.weight || error.height || error.speed || error.defense || error.attack || error.hp || error.types){
             let sendErrors = [];
             for (const key in error) {
@@ -131,14 +126,14 @@ export default function CreatePoke(){
                 hp: 0,
                 types: []
             })
-            return alert('poke creado chala')
+            return alert('Pokemon created successfully')
         }
             
     }
 
 
     return(
-        <div className='createContainer'>
+        <div className='createContainer' key={styles+1}>
             <div className='createLinks'>
                 <Link to={'/home'}><button>Home</button></Link>
             </div>
@@ -180,26 +175,28 @@ export default function CreatePoke(){
                                 <input type="number" value={input.defense} name="defense" onChange={(e) => handleChange(e)}/>
                                 <div>{error.defense && <span>{error.defense}</span>}</div>
                             </div>
-                            <div>
-                                <label>Types </label>
-                                <select onChange={(e)=>handleSelect(e)}>
-                                    {types.map((t,i)=>(
-                                    <option key={i} value={t}>{t[0].toUpperCase()+t.slice(1)}</option>
-                                    ))}
-                                </select>
+                        </div>
+                        <div className='createTypes'>
+                                <div>
+                                    <label>Types </label>
+                                    <select onChange={(e)=>handleSelect(e)}>
+                                        {types.map((t,i)=>(
+                                        <option key={i} value={t}>{t[0].toUpperCase()+t.slice(1)}</option>
+                                        ))}
+                                    </select>
+                                </div>
                                 <div>
                                     {error.types && <span>{error.types}</span>}  
                                 </div>
-                            </div> 
-                        </div>
-                        <ul>
-                            <li className='typesLi'>{input.types.map((t,i)=> (
-                                <div key={i}>
-                                    <button onClick={()=>handleSelectDelete(t)}>x</button>
-                                    <p>{t[0].toUpperCase()+t.slice(1)}</p>
-                                </div>))}
-                            </li>
-                        </ul>
+                                <ul>
+                                    <li className='typesLi'>{input.types.map((t,i)=> (
+                                        <div key={i}>
+                                            <button onClick={()=>handleSelectDelete(t)}>x</button>
+                                            <p>{t[0].toUpperCase()+t.slice(1)}</p>
+                                        </div>))}
+                                    </li>
+                                </ul>
+                            </div>
                         <button type='submit'>Create Pokemon</button>       
                     </form>
                 </div>

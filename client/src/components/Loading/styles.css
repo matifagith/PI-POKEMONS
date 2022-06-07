@@ -4,3 +4,6 @@
   background-color: rgba(80, 80, 80, 0.473);
   border-radius: 40px;
 }
+.loadingContainer img {
+  max-height: 200px;
+}

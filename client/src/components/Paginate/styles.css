@@ -1,0 +1,25 @@
+.paginate ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  margin: 2rem 10rem;
+  border-radius: 50px;
+  background-color: rgba(80, 80, 80, 0.473);
+}
+.paginate ul li {
+  padding: 1rem;
+  border-radius: 20%;
+  transition: transform 0.5s;
+}
+.paginate ul li:hover {
+  transform: scale(1.05);
+}
+.paginate ul li a {
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+}
+.paginate ul li:hover {
+  background-color: rgba(240, 20, 20, 0.466);
+  cursor: pointer;
+}

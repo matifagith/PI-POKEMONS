@@ -10,6 +10,8 @@ export const CREATE_POKE = 'CREATE_POKE';
 export const ORDER_BY = 'ORDER_BY';
 export const FILTER_BY_ORIGIN = 'FILTER_BY_ORIGIN';
 export const FILTER_BY_TYPE = 'FILTER_BY_TYPE';
-export const GET_DB_POKES = 'GET_DB_POKES';
+/* export const GET_DB_POKES = 'GET_DB_POKES'; */
+export const DELETE_POKE = 'GET_DB_POKES';
+
 
 

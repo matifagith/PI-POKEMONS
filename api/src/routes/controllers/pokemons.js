@@ -34,11 +34,9 @@ const pokeDbTemplate = (poke)=>{
     }  
 }
 
-
-
 async function getAllApiPokes(){
     try{
-        const apiAllPokes = await axios.get(`${API_URL_POKES}?limit=2`);   
+        const apiAllPokes = await axios.get(`${API_URL_POKES}?limit=40`);   
         const apiPokes = apiAllPokes.data?.results.map(e => axios.get(e.url)); //ingreso a todos los urls
         const pokesUrlInfo = await axios.all(apiPokes) //espero a que se cumplan todas las promises 
 
@@ -133,10 +131,12 @@ async function getAllPokesByName(name){
         if(apiResult !== 'PDNE' && dbResult === 'PDNE'){
             return apiResult
         }
-
-        return [...apiResult, ...dbResult]
+        if(apiResult !== 'PDNE' && dbResult !== 'PDNE'){
+            return [...apiResult, ...dbResult]
+        }
 
     }catch(e){
+        console.log(e)
         return 'error xd'
     }
 }

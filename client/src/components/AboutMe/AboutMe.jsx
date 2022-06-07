@@ -16,7 +16,7 @@ export default function AboutMe (){
     }
 
     return (
-        <div className="abMeContainer">
+        <div className="abMeContainer" key={styles+1}>
             <div>
                 <Link to={'home'}><button>Home</button></Link>
             </div>
@@ -25,11 +25,9 @@ export default function AboutMe (){
                     <div className='containerAbMe'>
                         <h1>About Me</h1>
                         <div>
-                            <p className='infoMe'> My name is Matías Farina Solá, I'm learning how to code since 2020 and in my experience
-                                I can tell that is the profession I love.
-                                I could stay hours just coding (I do) and creating new things that come to my mind.
-                                In this oportunitty I made a website of food and recipes to make or create yours.
-                                I hope you like I enjoy my work, if you'd like to communicate with me you can find how to do it below.
+                            <p className='infoMe'> My name is Matías Farina Solá, I'm learning the world of programing, and figured out It's amazing.
+                                In this oportunitty I made a website where you can search, sort, filter and create Pokemons.
+                                I hope you like and enjoy my work, if you'd like to communicate with me you can do it below.
                                 Thanks for coming by! </p>
                         </div>
                         <div className='linksInfo'>

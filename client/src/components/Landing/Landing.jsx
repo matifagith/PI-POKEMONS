@@ -5,7 +5,7 @@ import styles from './styles.css'
 
 export default function Landing(){
     return(
-        <div className="container">
+        <div className="container" key={styles+1}>
              <div>
                 <Link to={'/home'}>
                     <img src={require('../../resources/landingImage/landingText.png').default} alt="Henry Poke" className="imageTtitle" />         

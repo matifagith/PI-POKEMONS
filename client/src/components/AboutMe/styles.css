@@ -16,9 +16,10 @@
   font-size: 20px;
 }
 .abMeContainer button:hover {
+  background-color: #add9d6;
   cursor: pointer;
-  border-radius: 50px;
-  color: black;
+  color: #4a4f4e;
+  border-color: #4a4f4e;
 }
 .linksInfo {
   display: flex;
@@ -70,7 +71,7 @@
   border-bottom: 1px solid white;
 }
 .abMeBody {
-  min-height: calc(100vh - 93px);
+  min-height: calc(100vh - 117px);
   display: flex;
   align-items: center;
   justify-content: center;

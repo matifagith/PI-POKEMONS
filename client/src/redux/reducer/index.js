@@ -9,7 +9,8 @@ import{
     CLEAR_POKEMONS_STATE,
     FILTER_BY_ORIGIN,
     FILTER_BY_TYPE,
-    GET_DB_POKES
+    /* GET_DB_POKES, */
+    DELETE_POKE
 }
 from '../actions/actionTypes'
 
@@ -31,11 +32,11 @@ const reducer = (state = initialState, {type, payload}) =>{
                 pokemons: payload
             }
 
-        case GET_DB_POKES:
+        /* case GET_DB_POKES:
             return{
                 ...state,
                 pokemons: payload
-            }
+            } */
         
         case CLEAR_POKEMONS_STATE:
             return {
@@ -118,6 +119,12 @@ const reducer = (state = initialState, {type, payload}) =>{
                  pokemons: pokesOrError2,
                  pokeErrors: pokesFilteredByType.length === 0 ? ['NPWTT'] : []
             };
+
+        case DELETE_POKE:
+        return{
+            ...state,
+            pokemons: state.allPokemons.filter((e) => e.id !== payload),
+        }
 
         default:
         return state;

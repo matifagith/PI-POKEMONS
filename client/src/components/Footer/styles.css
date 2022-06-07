@@ -5,6 +5,9 @@
   background-color: rgba(80, 80, 80, 0.473);
   align-items: center;
 }
+.footerContainer p {
+  color: white;
+}
 .title {
   margin-left: 20px;
   height: 50px;

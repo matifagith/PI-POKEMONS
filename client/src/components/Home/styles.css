@@ -38,6 +38,8 @@
   background-color: #c369c3;
   color: white;
   border-color: white;
+  font-weight: bold;
+  font-size: 15px;
 }
 .containerLinks .buttons button:hover {
   background-color: rgba(214, 54, 54, 0.473);
@@ -81,6 +83,7 @@
   column-gap: 10px;
   justify-content: space-between;
   align-items: center;
+  row-gap: 10px;
 }
 .homeBackImage {
   background-image: url('../../resources/home/homebackimage1.webp');
@@ -142,4 +145,7 @@
   background-color: rgba(80, 80, 80, 0.473);
   border-radius: 40px;
   margin: 0 0 10px 0;
+}
+.currentPage {
+  background-color: rgba(240, 20, 20, 0.466);
 }

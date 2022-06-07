@@ -10,8 +10,9 @@ import{
     FILTER_BY_ORIGIN,
     FILTER_BY_TYPE,
     CLEAR_POKEMONS_STATE,
-    GET_DB_POKES,
+/*     GET_DB_POKES, */
     SEARCH_BY_ID,
+    DELETE_POKE,
   
 } from './actionTypes';
 
@@ -110,11 +111,20 @@ export const getPokeById = (id)=>{
     }
 }
 
-export const getDbPokes = (payload)=>{
+/* export const getDbPokes = (payload)=>{
     console.log(`Ejecuto: getDbPokes()`) 
     return async function (dispatch){
         return axios.get(`${URL}/pokemons/dbpokemons`)
         .then(res => dispatch({type: GET_DB_POKES, payload:res.data}))
+        .catch(err => console.log(err))
+    }
+} */
+
+export const deletePoke = (id)=>{
+    console.log('Ejecuto: deletePoke()')
+    return async function (dispatch){
+        return axios.delete(`${URL}/delete/${id}`)
+        .then(res => dispatch({type: DELETE_POKE, payload:res}))
         .catch(err => console.log(err))
     }
 }

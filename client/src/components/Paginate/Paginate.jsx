@@ -1,4 +1,5 @@
 import React from "react";
+import styles from './styles.css'
 
 export default function Paginate({pokesPerPage, pokesAmount, paginateFunction}){
     let pageNumbers = [];
@@ -7,19 +8,18 @@ export default function Paginate({pokesPerPage, pokesAmount, paginateFunction}){
     }
 
     return(
-        <nav>
+        <div className="paginate" key={styles+1}>
             <ul>
-                {pageNumbers ? pageNumbers.map(page =>{
+                {pageNumbers.length && pageNumbers.map(page =>{
                     return (
-                    <li key={page}>
-                        <a onClick={()=>paginateFunction(page)} href='*'>{page}</a>
+                    <li key={page} onClick={()=>paginateFunction(page)} id={page}>
+                        <a  href='#'>{page}</a>
                     </li>)
-                }) : 
-                <div>hola</div>}
+                })}
             </ul>
-        </nav> 
+        </div> 
     )
-    }
+}
 
 
 

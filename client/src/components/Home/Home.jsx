@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Paginate from '../Paginate/Paginate';
 import Footer from '../Footer/Footer';
 import styles from './styles.css'
+
 import {getAllPokes,
         getAllTypes,
         orderBy,
@@ -26,6 +27,7 @@ export default function Home(){
 
     const [rend, setRend] = useState('')
 
+
     //estados de la paginacion
     const [currentPage, setcurrentPage] = useState(1) 
     const [pokesPerPage] = useState(12)
@@ -35,7 +37,15 @@ export default function Home(){
     const indexFirstPoke = indexLastPoke - pokesPerPage;
     const pokesPaginateArr = pokemons.slice(indexFirstPoke, indexLastPoke)
 
-    const paginateFunction = (page)=> setcurrentPage(page)
+    const paginateFunction = (pageNumber)=> {
+        for (let i = 1; i <= Math.ceil(pokemons.length / pokesPerPage); i++) {
+            let page = document.getElementById(i);
+            page.classList.remove("currentPage");
+        }
+        let current = document.getElementById(pageNumber);
+        current.classList.add("currentPage")
+        setcurrentPage(pageNumber) 
+    }
     
 
     useEffect(()=>{
@@ -55,22 +65,26 @@ export default function Home(){
         dispatch(filterByType('default'))
         dispatch(clearAllPokes('default'))
         dispatch(getAllPokes())
+        setcurrentPage(1)
     }
 
     function handleOrder(e){
         e.preventDefault()
         dispatch(orderBy(e.target.value))
         rend === '' ? setRend('reRender') : setRend('')
+        setcurrentPage(1)
     }
 
     function handleFilterByOrigin(e){
         e.preventDefault()
         dispatch(filterByOrigin(e.target.value))
+        setcurrentPage(1)
     }
 
     function handleFilterByType(e){
         e.preventDefault()
         dispatch(filterByType(e.target.value))
+        setcurrentPage(1)
     }
 
     return (
@@ -162,14 +176,14 @@ export default function Home(){
                         })}
                     </div>
                     <div>
-                        {/* {pokesPaginateArr.length > 12 && <Paginate pokesPaginate={pokesPerPage} pokesAmount={pokemons.length} paginateFunction={paginateFunction}/>} */}
-                        {pokesPaginateArr.length}
+                         {pokemons.length > 12 && <Paginate pokesPerPage={pokesPerPage} pokesAmount={pokemons.length} paginateFunction={paginateFunction}/>} 
+                       
                     </div>
                 </div> 
             }
             </div>
             
-            <div><Footer/></div>
+            <div key={styles+1} ><Footer/></div>
         </div>
     )
 }
