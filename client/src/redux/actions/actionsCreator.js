@@ -10,7 +10,7 @@ import{
     FILTER_BY_ORIGIN,
     FILTER_BY_TYPE,
     CLEAR_POKEMONS_STATE,
-/*     GET_DB_POKES, */
+/*  GET_DB_POKES, */
     SEARCH_BY_ID,
     DELETE_POKE,
   

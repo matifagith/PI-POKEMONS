@@ -65,7 +65,7 @@ const reducer = (state = initialState, {type, payload}) =>{
         case SEARCH_BY_NAME:
             return{
                 ...state,
-                pokemons: [payload]
+                pokemons: payload
             }
         
         case ORDER_BY:

@@ -13,3 +13,16 @@
   height: 50px;
   padding: 5px;
 }
+.container2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container2 .footimg {
+  margin-left: 5px;
+  height: 25px;
+  border-radius: 5px;
+}
+.container2 .footimg:hover {
+  cursor: pointer;
+}

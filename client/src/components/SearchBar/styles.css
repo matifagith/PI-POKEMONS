@@ -3,6 +3,7 @@
   background-color: #c369c3;
   color: white;
   border-color: white;
+  font-weight: bold;
 }
 .searchContainer button:hover {
   background-color: rgba(214, 54, 54, 0.473);
@@ -12,4 +13,6 @@
 }
 .searchContainer input {
   border-radius: 50px;
+  height: 28px;
+  padding-left: 10px;
 }

@@ -65,6 +65,8 @@ export default function Home(){
         dispatch(filterByType('default'))
         dispatch(clearAllPokes('default'))
         dispatch(getAllPokes())
+        /* let page = document.getElementById(currentPage);
+        page.classList.remove("currentPage") */
         setcurrentPage(1)
     }
 

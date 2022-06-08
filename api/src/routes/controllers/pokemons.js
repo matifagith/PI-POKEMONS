@@ -37,15 +37,25 @@ const pokeDbTemplate = (poke)=>{
 async function getAllApiPokes(){
     try{
         const apiAllPokes = await axios.get(`${API_URL_POKES}?limit=40`);   
+        console.log('apiAllPokes')
+        console.log(apiAllPokes)
         const apiPokes = apiAllPokes.data?.results.map(e => axios.get(e.url)); //ingreso a todos los urls
+        console.log('apiPokes')
+        console.log(apiPokes)   
         const pokesUrlInfo = await axios.all(apiPokes) //espero a que se cumplan todas las promises 
-
-        let pokesData = pokesUrlInfo.map(e => e.data) // guardo en un array todas las promesas resueltas
-        let pokesInfo = pokesData.map( p => pokeApiTemplate(p)) 
+        console.log('pokesUrlInfo')
+        console.log(pokesUrlInfo.length)
+        let pokesData = pokesUrlInfo?.map(e => e.data) // guardo en un array todas las promesas resueltas
+        console.log('pokesData')
+        console.log(pokesData.length)
+        let pokesInfo = pokesData?.map( p => pokeApiTemplate(p)) 
+        console.log('pokesInfo')
+        console.log(pokesInfo.length)
 
         return pokesInfo
 
     }catch(e){
+        console.log('error en pokesapi')
         console.log(e)
         return e
     }
@@ -63,9 +73,6 @@ async function getAllDbPokes(){
 
         const pokesDbInfo = dbPokes.map(p => pokeDbTemplate(p))
         
-   /*      let resp = pokesDbInfo.length ? pokesDbInfo : ['NPAC']
-        console.log(resp) */
-
         return  pokesDbInfo
 
     }catch(e){
@@ -79,6 +86,8 @@ async function getAllPokes (){
         const [pokesApi, pokesDb] = await Promise.all([getAllApiPokes(), getAllDbPokes()]);
         return [...pokesApi, ...pokesDb];
     }catch(e){
+        console.log('pokesApi')
+        console.log(pokesApi)
         console.log(e)
         return e
     }
@@ -89,29 +98,30 @@ async function getApiPokeByName(name){
     try{
         const apiPokeByName = await axios.get(`${API_URL_POKES}/${name.toLowerCase().toString()}`);
         let pokeInfo =  apiPokeByName.data? pokeApiTemplate(apiPokeByName.data) : 'PDNE'          
-        
+        /* console.log(pokeInfo) */
         return pokeInfo
         
     }catch(e){
-        //console.log(e)
+        /* console.log(e) */
         return 'PDNE'
     }
 }
 
 async function getDbPokeByName(name){
     try{
-        let dbPokeByName =  await Pokemon.findOne({
+        let dbPokeByName =  await Pokemon.findAll({
             where: {name},
             include: {model: Type}
         })
-        if(dbPokeByName === null){
+        if(dbPokeByName.length === 0){
             return 'PDNE'
         }
-        
-        return pokeDbTemplate(dbPokeByName)
+
+        let resp = dbPokeByName.map(e=>pokeDbTemplate(e))
+        return resp
 
     }catch(e){
-        //console.log(e)
+        /* console.log(e) */
         return 'PDNE'
     }
 }
@@ -120,31 +130,31 @@ async function getAllPokesByName(name){
     try{
         let apiResult = await getApiPokeByName(name);
         let dbResult = await getDbPokeByName(name);  
-
         
         if(apiResult === 'PDNE' && dbResult === 'PDNE'){
-            return 'PDNE'
+            return ['PDNE']
         }
         if(apiResult === 'PDNE' && dbResult !== 'PDNE'){
             return dbResult
         }
         if(apiResult !== 'PDNE' && dbResult === 'PDNE'){
-            return apiResult
+            return [apiResult]
         }
         if(apiResult !== 'PDNE' && dbResult !== 'PDNE'){
-            return [...apiResult, ...dbResult]
+            let chorro = [apiResult, ...dbResult]
+            return chorro
         }
 
     }catch(e){
         console.log(e)
-        return 'error xd'
+        return 'error en getAllPokesByName'
     }
 }
 
 //BY ID
 async function getPokeById(id){
     try{
-        if(id.length > 2){
+        if(id.length > 5){
             const pokeDb = await Pokemon.findOne({
                 where: {id},
                 include: Type

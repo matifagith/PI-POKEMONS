@@ -11,7 +11,7 @@ export default function PokeCard({id, name,image, type}){
     const handleDelete = ()=>{
         if (window.confirm("Are you sure you want to delete this Pokemon?")) {
             dispatch(deletePoke(id));
-            document.location.reload();
+            /* document.location.reload(); */
         }
     }
 

@@ -12,27 +12,29 @@ router.get('/', async (req, res, next)=>{
             if(pokeinfoByName === 'PDNE'){
                 res.status(200).send('PDNE')
             }
+            /* console.log('pokeinfoByName: ')
+            console.log(pokeinfoByName)  */
             res.status(200).json(pokeinfoByName)
         }
         else{
             console.log('getAllPokes()')
             const pokes =  await getAllPokes();
+            /* console.log(pokes) */
             res.status(200).json(pokes) 
         }
-        
     }catch(e){
         next(e)
     }
 })
 
-router.get('/dbpokemons', async (req, res, next)=>{
+/* router.get('/dbpokemons', async (req, res, next)=>{
     try{
         const allDbPokes = await getAllDbPokes()
         res.status(200).json(allDbPokes)
     }catch(e){
         next(e)
     }
-})
+}) */
 
 
 router.get('/:id', async (req, res, next)=>{
