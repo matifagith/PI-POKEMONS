@@ -17,11 +17,13 @@
   margin-left: auto;
   justify-content: center;
   background-color: rgba(80, 80, 80, 0.63);
-  border-radius: 50px;
+  border-radius: 1rem;
   padding: 5px 20px 5px 20px;
+  transition: transform 0.5s;
 }
 .imageTtitle:hover {
-  background-color: rgba(214, 54, 54, 0.473);
+  box-shadow: 1rem 1rem 80px -2px black;
+  border-radius: 10%;
+  transform: scale(1.1);
   cursor: pointer;
-  color: white;
 }
