@@ -1,5 +1,4 @@
 const { Router } = require('express');
-const { route } = require('./pokeGetRoute');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 

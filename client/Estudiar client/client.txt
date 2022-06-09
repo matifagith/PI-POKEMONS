@@ -1,0 +1,45 @@
+WARNING: Este resumen puede que no este 100% correcto ...
+
+-------------------- Dependencias ---------------------------
+
+axios
+react
+react-dom
+react-redux
+react-router-dom
+redux
+redux-thunk
+redux-devtools-extension
+
+--------------- index.js (root) -------------------
+
+React -->
+ReactDOM -->
+Provider -->
+BrowserRouter -->
+
+-------------- App.js ----------------------
+
+Route -->
+
+------------- Landing.jsx ----------------
+
+Link ---> 
+
+-------------- Home.jsx ---------------------
+
+useState --> 
+useEffect -->
+useDispatch -->
+useSelector -->
+
+---------------- PokeDetail.jsx -------------------
+
+useParams -->
+
+--------------- store -----------------------
+
+applyMiddleware -->
+compose -->
+thunk -->
+

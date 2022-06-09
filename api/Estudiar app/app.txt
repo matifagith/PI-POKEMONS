@@ -1,0 +1,149 @@
+WARNING: Este resumen puede que no este 100% correcto ...
+
+--------------- index (root) ------------
+
+Apenas levanto el back se dirige a mi archivo root (index)
+-Conecto / sincronizo los modelos al mismo tiempo con la DB que previamente fueron creados en db.js (conn.sync()) --> promesa
+-El (force:true) borra todo lo que habia y lo vuelve a crear
+-Luego ejecuta la funcion que llena la DB con los tipos de pokemons --> apiTypesToDb()
+-Le digo a (server) que es una instancia de express que se conecte al puerto 3000 y le paso una callback
+
+
+conn.sync({ force: true }).then(() => {
+  apiTypesToDb();
+  server.listen(3001, () => {
+    console.log('%s listening at 3001'); 
+    });
+});
+
+-------------- db.js ---------------------
+
+ORM (Object Relational Maping) --> Sequelize 
+Sequelize --> Nexo conector entre nuestra DB y nuestra aplicacion de Java Script
+              Sus metodos son asincronos por lo que devuelven promesas
+
+              La Base de datos esta construida mediante tablas y relaciones
+              Los modelos son abstracciones que representan a las tablas
+
+conecto Sequelize con la DB       motor
+                                    |
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
+  logging: false, --> mensaje en la consola de que es lo que ejecuta Sequelize.
+  native: false, --> ni idea pa que es
+});
+
+Creo los Modelos en Pokemon.js y en Type.js                        (quitar info de momento de creado o actualizado)
+                                                                            |
+sequelize.define('pokemon', { instancias que van a ser mapeadas } , { timestamps: false } ) 
+
+
+Como los pokemons pueden tener mas de un tipo y a su vez los tipos pueden asociarse a mas de un pokemon
+ambos se entrelazan por una tabla intermedia que la puedo autogenerar en la relacion
+                                  |        
+Pokemon.belongsToMany(Type, {through:'poke_type'});
+Type.belongsToMany(Pokemon, {through:'poke_type'});
+
+Metodos de Sequelize: --> Model Query finders --> all finder methods are instances of the model
+const xxx = await Pokemon.metodo() 
+
+-findAll() --> devuelve un array de objetos 
+               Si quiero que me traiga un atributo en particular le paso {attributes: ['name', 'heigt']}
+
+-findByPk() --> lo uso para buscar por id
+                Pokemon.findByPk(id, {
+                    attributes: ['name', 'heigt']
+                })
+
+-findOne() --> Devuelve el primero que coincida
+               Pokemon.findOne({
+                   where : {name : 'algo'}
+               })
+
+.findOrCreate() --> video mati monas 1h 38 min ORM p1
+
+.create() --> https://sequelize.org/docs/v6/core-concepts/model-querying-basics/#simple-insert-queries
+
+.bulkcreate() --> https://sequelize.org/docs/v6/core-concepts/model-querying-basics/#creating-in-bulk
+
+.addType() --> 
+
+.destroy() -->  https://sequelize.org/docs/v6/core-concepts/model-querying-basics/#simple-delete-queries
+
+.update() -->  https://sequelize.org/docs/v6/core-concepts/model-querying-basics/#simple-update-queries
+ 
+ router.put("/update/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    let { title, summary, score, healthScore, steps, image, dietTypes } =
+      req.body;
+    if (typeof id === "number") {
+      res.send("Can't update this recipe");
+    } else if (typeof id === "string") {
+      Recipe.update(
+        {
+          title,
+          summary,
+          score,
+          healthScore,
+          steps,
+          image,
+        },
+        {
+          where: { id: id },
+        }
+      );
+      if (dietTypes.length) {
+        let arr = [];
+        var recip = await Recipe.findOne({
+          where: {
+            id: id,
+          },
+        });
+        for (let i = 0; i < dietTypes.length; i++) {
+          const diet = await DietType.findOne({
+            where: { name: dietTypes[i] },
+          });
+          arr.push(diet);
+        }
+        await recip.setDietTypes(arr[0]);
+        if (arr[1]) {
+          for (let i = 1; i < arr.length; i++) {
+            await recip.addDietTypes(arr[i]);
+          }
+        }
+      }
+      res.send(recip);
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
+
+--------------------- app.js -------------------
+
+express --> framework web minimalista y rapido para Node.js
+
+Middelware --> Es un traductor que se ubica en el medio de una comunicacion y hace algo.
+bodyParser --> Middelware que nos permite leer y recibir formato JSON
+morgan --> Middelware que devuelve cierta informacion cuando una solicitud ingresa a nuestro servidor
+cors --> podemos habilitar o deshabilitar desde donde pueden acceder a nuestro servidor, que acciones pueden realizar, etc
+
+
+-------------- routes --> index.js ---------------
+Router --> Middelware que permite manejar las rutas para modularizarlas 
+
+Solicitudes HTTP: --> viene acompañada con su path respectivo
+.get() --> obtener tarea
+.post() --> crear una nueva tarea
+.delete() --> borrar una tarea
+.put() --> actualizar una tarea existente
+
+axios --> Libreria de java script que nos permite hacer peticiones a servidores y conectarnos a la API --> Application Programming Interface
+
+axios.all --> es un método auxiliar integrado en Axios para gestionar solicitudes simultáneas. En lugar de realizar múltiples solicitudes HTTP individualmente, el método nos permite realizar múltiples solicitudes HTTP a nuestros end points en conjunto
+
+Promise.all --> devuelve una promesa que termina correctamente cuando todas las promesas en el argumento iterable han sido concluídas con éxito, o bien rechaza la petición con el motivo pasado por la primera promesa que es rechazada.
+
+
+
