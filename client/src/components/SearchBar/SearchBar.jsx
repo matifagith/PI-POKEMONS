@@ -4,7 +4,7 @@ import {getPokeByName} from '../../redux/actions/actionsCreator'
 import styles from './styles.css'
 
 
-export default function SearchBar(){
+export default function SearchBar({ callBack}){
     const dispatch = useDispatch()
     const [input, setInput] = useState('')
 
@@ -15,13 +15,10 @@ export default function SearchBar(){
 
     const handleSubmit=(e)=>{
         e.preventDefault()
-       /*  let testLetter = /^[a-zA-Z][^$()@!¡""#/=¿{},.?*-_%&|<>#]*$/;
-        if (!testLetter.test(input)) {
-            alert('Only letters are allowed')
-            setInput('')
-        } */
+       
         if(input.toLowerCase().replace(/ /g, "").length > 0){
             dispatch(getPokeByName(input))
+            callBack(1)
             setInput('')
         }
         if(input.toLowerCase().replace(/ /g, "").length === 0 ){

@@ -22,15 +22,18 @@ export default function Home(){
     const dispatch = useDispatch();
     
     const pokemons = useSelector(state=> state.pokemons)
+    const allPokes = useSelector(state => state.allPokemons)
     const pokeTypes = useSelector(state=> state.pokeTypes)
     const pokeErrors = useSelector(state => state.pokeErrors)
 
     const [rend, setRend] = useState('')
 
-
     //estados de la paginacion
     const [currentPage, setcurrentPage] = useState(1) 
     const [pokesPerPage] = useState(12)
+
+    const [contador, setContador] = useState(allPokes.length)
+
 
     //paginacion
     const indexLastPoke = currentPage * pokesPerPage;
@@ -47,6 +50,9 @@ export default function Home(){
         setcurrentPage(pageNumber) 
     }
     
+    const callBack = (pag)=>{
+        setcurrentPage(1)
+    }
 
     useEffect(()=>{
         dispatch(getAllPokes())
@@ -59,11 +65,15 @@ export default function Home(){
         
     },[dispatch])
 
+    useEffect(()=>{
+        setContador(allPokes.length)
+    })
+
     const handleClick = (e) =>{
         e.preventDefault()
-        dispatch(filterByOrigin())
+        dispatch(filterByOrigin('default'))
         dispatch(filterByType('default'))
-        dispatch(clearAllPokes('default'))
+        dispatch(clearAllPokes())
         dispatch(getAllPokes())
         /* let page = document.getElementById(currentPage);
         page.classList.remove("currentPage") */
@@ -97,6 +107,7 @@ export default function Home(){
                         <img src={require('../../resources/landingImage/landingText.png').default} alt="Henry Poke" className="homeTitle" />
                     </Link>
                 </div>
+                {/* <div><p>Contador: {contador}</p></div> */}
                 <div className='buttons'>
                     <Link to={'/create'}><button>Create</button></Link>
                     {/* <Link to={'/mypokes'}><button className='botonMyPokes'>My Pokes</button></Link>  */}
@@ -105,7 +116,7 @@ export default function Home(){
             </div>
             
             <div className='searchselects'>
-                <SearchBar className='searchBar'/>
+                <SearchBar callBack={callBack} className='searchBar'/>
                 {pokesPaginateArr.length !== 0 ? <img src={require(`../../resources/home/pokeball.jpeg`).default} alt='pokeball'  onClick={(e)=>handleClick(e)} /> :
                 <img src={require(`../../resources/home/pokeballGif.gif`).default} alt='pokeball'  onClick={(e)=>handleClick(e)} />}
                 

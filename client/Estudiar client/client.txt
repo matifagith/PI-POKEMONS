@@ -2,8 +2,8 @@ WARNING: Este resumen puede que no este 100% correcto ...
 
 -------------------- Dependencias ---------------------------
 
-axios
-react
+axios 
+react 
 react-dom
 react-redux
 react-router-dom
@@ -13,8 +13,9 @@ redux-devtools-extension
 
 --------------- index.js (root) -------------------
 
-React -->
-ReactDOM -->
+React --> Es una biblioteca de JavaScript que te ayuda a crear interfaces de usuario interactivas de forma sencilla. Diseña vistas simples para cada estado en tu aplicación, y React se encargará de actualizar y renderizar de manera eficiente los componentes correctos cuando los datos cambien.
+
+ReactDOM --> 
 Provider -->
 BrowserRouter -->
 
