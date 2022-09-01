@@ -21,7 +21,7 @@ const URL = 'http://localhost:3001';
 export const getAllPokes = ()=>{
     console.log('Ejecuto: getAllPokes()')
     return async function (dispatch){
-        return axios.get(`${URL}/pokemons`)
+        return axios.get(`/pokemons`) /* ${URL} */
         .then(res => dispatch({type: GET_ALL_POKES, payload:res.data}))
         .catch(err => console.log(err))
     }
@@ -37,7 +37,7 @@ export const clearAllPokes = () => {
 export const getAllTypes = ()=>{
     console.log('Ejecuto: getAllTypes()')
     return async function (dispatch){
-        return axios.get(`${URL}/types`)
+        return axios.get(`${URL}/types`) /* ${URL} */
         .then(res => dispatch({type: GET_POKE_TYPES, payload:res.data}))
         .catch(err => console.log(err))
     }
@@ -46,7 +46,7 @@ export const getAllTypes = ()=>{
 export const getPokeDetail = (id)=>{
     console.log(`Ejecuto: getPokeDetail(id = ${id})`)
     return async function (dispatch){
-        return axios.get(`${URL}/pokemons/${id}`)
+        return axios.get(`/pokemons/${id}`) /* ${URL} */
         .then(res => dispatch({type: GET_POKE_DETAIL, payload:res.data}))
         .catch(err => console.log(err))
     }
@@ -62,7 +62,7 @@ export const clearDetail = () => {
 export const getPokeByName = (name)=>{
     console.log(`Ejecuto: getPokeByName(name= '${name.toLowerCase().replace(/ /g, "")}')`)
     return async function (dispatch){
-        return axios.get(`${URL}/pokemons?name=${name.toLowerCase().replace(/ /g, "")}`)
+        return axios.get(`/pokemons?name=${name.toLowerCase().replace(/ /g, "")}`) /* ${URL} */
         .then(res => dispatch({type: SEARCH_BY_NAME, payload:res.data}))
         .catch(err => console.log(err))
     }
@@ -72,7 +72,7 @@ export const getPokeByName = (name)=>{
 export const createPoke = (payload)=>{
     console.log('Ejecuto: createPoke()')
     return async function (dispatch){
-        return axios.post(`${URL}/post`, payload)
+        return axios.post(`/post`, payload) /* ${URL} */
         .then(res => dispatch({type: CREATE_POKE, payload:res}))
         .catch(err => console.log(err))
     }
@@ -105,7 +105,7 @@ export const filterByType = (payload)=>{
 export const getPokeById = (id)=>{
     console.log(`Ejecuto: getPokeById(id= ${id})`)
     return async function (dispatch){
-        return axios.get(`${URL}/pokemons/${id}`)
+        return axios.get(`/pokemons/${id}`) /* ${URL} */
         .then(res => dispatch({type: SEARCH_BY_ID, payload:res.data}))
         .catch(err => console.log(err))
     }
@@ -123,7 +123,7 @@ export const getPokeById = (id)=>{
 export const deletePoke = (id)=>{
     console.log('Ejecuto: deletePoke()')
     return async function (dispatch){
-        return axios.delete(`${URL}/delete/${id}`)
+        return axios.delete(`/delete/${id}`) /* ${URL} */
         .then(res => dispatch({type: DELETE_POKE, payload:res}))
         .catch(err => console.log(err))
     }
