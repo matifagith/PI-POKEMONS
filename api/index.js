@@ -22,7 +22,7 @@ const { conn } = require('./src/db.js');
 const {apiTypesToDb} = require('./src/routes/controllers/types')
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   apiTypesToDb();
   server.listen(process.env.PORT, () => {  /* 3001 */
     console.log('%s listening at 3001'); // eslint-disable-line no-console
