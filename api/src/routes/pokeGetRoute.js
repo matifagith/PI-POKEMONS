@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {getAllPokes, getAllPokesByName, getPokeById, getAllDbPokes} = require ('./controllers/pokemons')
+const {getAllPokes, getAllPokesByName, getPokeById} = require ('./controllers/pokemons')
 
 router.get('/', async (req, res, next)=>{
     try{

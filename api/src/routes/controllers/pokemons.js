@@ -41,7 +41,7 @@ async function getAllApiPokes(){
         console.log(apiAllPokes) */
         const apiPokes = apiAllPokes.data?.results.map(e => axios.get(e.url)); //ingreso a todos los urls
         /* console.log('apiPokes')
-        console.log(apiPokes)   */ 
+        console.log(apiPokes)  */ 
         const pokesUrlInfo = await axios.all(apiPokes) //espero a que se cumplan todas las promises 
         /* console.log('pokesUrlInfo')
         console.log(pokesUrlInfo.length) */
@@ -166,7 +166,6 @@ async function getPokeById(id){
                 
             return pokeInfo
         }      
-
         }catch(e){
             console.log(e)
             return 'PDNE'
