@@ -37,7 +37,7 @@ export const clearAllPokes = () => {
 export const getAllTypes = ()=>{
     console.log('Ejecuto: getAllTypes()')
     return async function (dispatch){
-        return axios.get(`${URL}/types`) /* ${URL} */
+        return axios.get(`/types`) /* ${URL} */
         .then(res => dispatch({type: GET_POKE_TYPES, payload:res.data}))
         .catch(err => console.log(err))
     }
