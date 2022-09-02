@@ -62,7 +62,7 @@
   color: aliceblue;
 }
 .containerAbMe {
-  min-height: calc(100vh - 438, 88);
+  min-height: 60vh/* calc(100vh - 438, 88) */;
 }
 .containerAbMe .container h1 {
   font-size: 50px;
