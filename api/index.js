@@ -25,7 +25,7 @@ const {apiTypesToDb} = require('./src/routes/controllers/types')
 conn.sync({ force: false }).then(() => {
   server.listen(process.env.PORT, async () => {  /* 3001 */
     const types = await Type.findAll()
-    types === 0 && apiTypesToDb();
+    types.length === 0 && apiTypesToDb();
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
