@@ -18,13 +18,14 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const { conn, Type } = require('./src/db.js');
 const {apiTypesToDb} = require('./src/routes/controllers/types')
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
-  apiTypesToDb();
-  server.listen(process.env.PORT, () => {  /* 3001 */
+  server.listen(process.env.PORT, async () => {  /* 3001 */
+    const types = await Type.findAll()
+    types === 0 && apiTypesToDb();
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
