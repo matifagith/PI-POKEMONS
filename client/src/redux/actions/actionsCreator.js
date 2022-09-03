@@ -19,7 +19,7 @@ import{
 const URL = 'http://localhost:3001';
 
 export const getAllPokes = ()=>{
-    console.log('Ejecuto: getAllPokes()')
+    /* console.log('Ejecuto: getAllPokes()') */
     return async function (dispatch){
         return axios.get(`/pokemons`) /* ${URL} */
         .then(res => dispatch({type: GET_ALL_POKES, payload:res.data}))
@@ -28,14 +28,14 @@ export const getAllPokes = ()=>{
 }
 
 export const clearAllPokes = () => {
-    console.log(`Ejecuto: clearAllPokes()`)
+    /* console.log(`Ejecuto: clearAllPokes()`) */
     return {
       type: CLEAR_POKEMONS_STATE,
     };
   };
 
 export const getAllTypes = ()=>{
-    console.log('Ejecuto: getAllTypes()')
+    /* console.log('Ejecuto: getAllTypes()') */
     return async function (dispatch){
         return axios.get(`/types`) /* ${URL} */
         .then(res => dispatch({type: GET_POKE_TYPES, payload:res.data}))
@@ -44,7 +44,7 @@ export const getAllTypes = ()=>{
 }
 
 export const getPokeDetail = (id)=>{
-    console.log(`Ejecuto: getPokeDetail(id = ${id})`)
+    /* console.log(`Ejecuto: getPokeDetail(id = ${id})`) */
     return async function (dispatch){
         return axios.get(`/pokemons/${id}`) /* ${URL} */
         .then(res => dispatch({type: GET_POKE_DETAIL, payload:res.data}))
@@ -53,14 +53,14 @@ export const getPokeDetail = (id)=>{
 }
 
 export const clearDetail = () => {
-    console.log(`Ejecuto: clearDetail()`)
+    /* console.log(`Ejecuto: clearDetail()`) */
     return {
       type: CLEAR_DETAIL_STATE,
     };
 };
 
 export const getPokeByName = (name)=>{
-    console.log(`Ejecuto: getPokeByName(name= '${name.toLowerCase().replace(/ /g, "")}')`)
+    /* console.log(`Ejecuto: getPokeByName(name= '${name.toLowerCase().replace(/ /g, "")}')`) */
     return async function (dispatch){
         return axios.get(`/pokemons?name=${name.toLowerCase().replace(/ /g, "")}`) /* ${URL} */
         .then(res => dispatch({type: SEARCH_BY_NAME, payload:res.data}))
@@ -70,7 +70,7 @@ export const getPokeByName = (name)=>{
 
 
 export const createPoke = (payload)=>{
-    console.log('Ejecuto: createPoke()')
+    /* console.log('Ejecuto: createPoke()') */
     return async function (dispatch){
         return axios.post(`/post`, payload) /* ${URL} */
         .then(res => dispatch({type: CREATE_POKE, payload:res}))
@@ -79,7 +79,7 @@ export const createPoke = (payload)=>{
 }
 
 export const orderBy = (payload)=>{
-    console.log(`Ejecuto: orderBy( ${payload} )`)
+    /* console.log(`Ejecuto: orderBy( ${payload} )`) */
     return {
         type: ORDER_BY,
         payload
@@ -87,7 +87,7 @@ export const orderBy = (payload)=>{
 }
 
 export const filterByOrigin = (payload)=>{
-    console.log(`Ejecuto: filterByOrigin( ${payload} )`) 
+    /* console.log(`Ejecuto: filterByOrigin( ${payload} )`)  */
     return{
         type: FILTER_BY_ORIGIN,
         payload: payload
@@ -95,7 +95,7 @@ export const filterByOrigin = (payload)=>{
 }
 
 export const filterByType = (payload)=>{
-    console.log(`Ejecuto: filterByType( ${payload} )`) 
+    /* console.log(`Ejecuto: filterByType( ${payload} )`) */ 
     return{
         type: FILTER_BY_TYPE,
         payload: payload        
@@ -121,7 +121,7 @@ export const getPokeById = (id)=>{
 } */
 
 export const deletePoke = (id)=>{
-    console.log('Ejecuto: deletePoke()')
+    /* console.log('Ejecuto: deletePoke()') */
     return async function (dispatch){
         return axios.delete(`/delete/${id}`) /* ${URL} */
         .then(res => dispatch({type: DELETE_POKE, payload:res}))
